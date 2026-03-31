@@ -1,44 +1,47 @@
-#🚀 Python Entry-Level Job Hunter
-A lightweight, automated Python script designed to scrape, score, and notify you about the best entry-level software engineering roles using SerpApi and Discord Webhooks.
+# 🚀 JobFinder-Py: Automated Entry-Level Scout
 
-Stop manually refreshing job boards. This script does the heavy lifting by identifying high-match roles based on title, description, and seniority level, then pings your Discord server with the results.
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
-#✨ Key Features
-Smart Scoring System: Ranks jobs based on keywords and preferred skills (e.g., Python, React, AWS) to ensure you see the most relevant roles first.
+**JobFinder-Py** is a lightweight automation tool designed to help junior developers break through the noise of the job market. It automatically scrapes, scores, and filters Software Engineering roles, delivering high-quality leads directly to your **Discord** server.
 
-Automatic Filtering: Hard-coded exclusion of "Senior," "Lead," and "Manager" roles to keep your feed strictly entry-level/junior.
+---
 
-Deduplication: Maintains a seen_jobs.json file to ensure you never get notified about the same job twice.
+## 📖 Table of Contents
+* [Key Features](#-key-features)
+* [How It Works](#-how-it-works)
+* [Installation](#-installation)
+* [Configuration](#-configuration)
+* [Usage](#-usage)
+* [License](#-license)
 
-Discord Integration: Delivers formatted job alerts—including title, company, location, and application link—directly to your Discord channel.
+---
 
-Customizable Queries: Easily modify search terms like "backend engineer" or "remote software developer" to fit your niche.
+## ✨ Key Features
 
-#🛠️ Tech Stack
-Language: Python 3.x
+*   **🎯 Smart Seniority Filtering**: Automatically ignores roles containing keywords like **Senior**, **Staff**, **Principal**, or **Manager** to keep results relevant for entry-level talent.
+*   **📊 Weighted Scoring System**: Ranks jobs based on your specific stack (e.g., **Python**, **React**, **AWS**) and prioritizes them in your feed.
+*   **🚫 Duplicate Prevention**: Uses a local `seen_jobs.json` database to ensure you **never receive the same job notification twice**.
+*   **🤖 Discord Integration**: Sends beautifully formatted notifications including **Job Title**, **Company**, **Location**, and a **Direct Apply Link**.
+*   **🔍 Multi-Query Support**: Search for multiple titles (e.g., "Frontend Developer" and "Python Intern") in a single run.
 
-APIs: Google Jobs via SerpApi
+---
 
-Notifications: Discord Webhooks
+## ⚙️ How It Works
 
-Libraries: requests, hashlib, json
+The script follows a simple 4-step pipeline:
 
+1.  **Fetch**: Queries the **Google Jobs API** via SerpApi based on your custom query list.
+2.  **Filter**: Scrubs titles for "blacklist" words to ensure the role isn't mid-to-senior level.
+3.  **Score**: Analyzes the description for **Preferred Skills**; higher scores indicate a better match for your resume.
+4.  **Notify**: If a job is new and passes the **Minimum Score** threshold, it pings your Discord Webhook.
 
+---
 
-#⚙️ Setup
-Clone the repo.
+## 🛠 Installation
 
-Environment Variables: Set your SERPAPI_KEY and DISCORD_WEBHOOK in your environment.
-
-Install Requirements: pip install requests.
-
-Run: python main.py.
-
-#📝 Configuration
-You can fine-tune the search behavior directly in the CONFIG section of the script:
-
-DAILY_LIMIT: Max number of jobs to post per run.
-
-MIN_SCORE: Minimum "match score" required for a job to be sent to Discord.
-
-SEARCH_QUERIES: Tailor the list of terms the script searches for.
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/yourusername/job-finder-py.git](https://github.com/yourusername/job-finder-py.git)
+cd job-finder-py
