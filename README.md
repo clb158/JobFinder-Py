@@ -45,3 +45,36 @@ The script follows a simple 4-step pipeline:
 ```bash
 git clone [https://github.com/yourusername/job-finder-py.git](https://github.com/yourusername/job-finder-py.git)
 cd job-finder-py
+```
+### 2. Install Dependencies
+```bash
+pip install requests
+```
+### 3. Set Up Environment Variables
+The script requires two keys to function. Export them to your environment:
+```bash
+export SERPAPI_KEY='your_serp_api_key_here'
+export DISCORD_WEBHOOK='your_discord_webhook_url_here'
+```
+### 4.🔧 Configuration
+Fine-tune the search logic within the CONFIG section of main.py:
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SEARCH_QUERIES` | List of titles to search for. | `["junior software engineer", ...]` |
+| `PREFERRED_SKILLS` | Tech that increases the "Match Score." | `["python", "react", "sql", ...]` |
+| `MIN_SCORE` | Points required to trigger a notification. | `5` |
+| `DAILY_LIMIT` | Maximum jobs to post per run. | `15` |
+| `EXCLUDE` | Keywords that disqualify a job instantly. | `["senior", "lead", "staff"]` |   
+
+
+🚀 Usage
+To run the script manually:
+```bash
+python main.py
+```
+[!TIP]
+Automation: Set this up as a GitHub Action or a Cron Job to run every morning at 9:00 AM so you are always the first to apply!
+
+📄 License
+Distributed under the MIT License. See LICENSE for more information.
+Disclaimer: This tool uses SerpApi which may incur costs depending on your usage tier. Use responsibly.
